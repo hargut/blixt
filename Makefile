@@ -146,6 +146,9 @@ test:
 test.integration:
 	cargo test --package tests-integration
 
+test.integration.reuse:
+	CARGO_HOME="$(WORK_DIR)/target" RUSTUP_HOME="$(WORK_DIR)/target" cargo test --package tests-integration
+
 .PHONY: test.gencert
 test.gencert: cfssl cfssljson
 	$(CFSSL) gencert \

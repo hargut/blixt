@@ -118,4 +118,5 @@ jobs:
           # kind load broken for podman https://github.com/kubernetes-sigs/kind/issues/3945
           export REGISTRY="localhost"
           export TAG="pr-${{ github.event.pull_request.number }}-${{ github.sha }}"
-          make test.integration
+          sudo chown -R "$(id -u):$(id -g)" target/
+          make test.integration.reuse
